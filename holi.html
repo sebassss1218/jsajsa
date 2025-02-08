@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Mi Amor</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffeb3b;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        .flower {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://img.freepik.com/vector-gratis/ilustracion-vector-flor-acuarela-estilo-colorido_341269-945.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            animation: float 5s infinite linear;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .big-text {
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="mainContainer" class="container">
+        <h1>Hola mi amor</h1>
+        <p>Esta página es para ti con todo el amor de tu ing favorito. 💛</p>
+        <button class="button" onclick="showValentinePage()">Solo me quieres un poquito? Dale aquí</button>
+    </div>
+    
+    <div id="valentineContainer" class="container hidden">
+        <h1>Gracias por llegar a mi vida</h1>
+        <p>Solo quiero agradecerte por estar a mi lado, por hacer mis días mejores y por ser tan increíble. Tenerte en mi vida es un regalo, eres lo mejor que me ha pasado y te amo con todo mi corazón. 💖</p>
+        <p class="big-text">¿Quieres ser mi Valentín? 💕</p>
+        <button class="button" id="yesButton" onclick="showDateMessage()">Sí</button>
+        <button class="button" id="noButton" onclick="hideNoButton()">No</button>
+        <p id="dateMessage" class="hidden big-text">Nos vemos el 15 de febrero ❤️</p>
+        <button class="button hidden" id="spotifyButton" onclick="openSpotify()">Escucha nuestra canción</button>
+    </div>
+
+    <script>
+        function createFlowers() {
+            const positions = [
+                { top: '10%', left: '10%' }, { top: '10%', left: '80%' },
+                { top: '80%', left: '10%' }, { top: '80%', left: '80%' },
+                { top: '50%', left: '5%' }, { top: '50%', left: '90%' },
+                { top: '20%', left: '50%' }, { top: '80%', left: '50%' },
+                { top: '30%', left: '20%' }, { top: '70%', left: '75%' }
+            ];
+            positions.forEach(pos => {
+                let flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.style.left = pos.left;
+                flower.style.top = pos.top;
+                document.body.appendChild(flower);
+            });
+        }
+
+        function showValentinePage() {
+            document.getElementById("mainContainer").classList.add("hidden");
+            document.getElementById("valentineContainer").classList.remove("hidden");
+        }
+
+        function hideNoButton() {
+            document.getElementById("noButton").classList.add("hidden");
+        }
+
+        function showDateMessage() {
+            document.getElementById("dateMessage").classList.remove("hidden");
+            document.getElementById("spotifyButton").classList.remove("hidden");
+        }
+
+        function openSpotify() {
+            window.open("https://open.spotify.com/intl-es/track/2kP6fOqdSQ5CYqVH5z5844?si=488351f401654618", "_blank");
+        }
+
+        createFlowers();
+    </script>
+</body>
+</html>
